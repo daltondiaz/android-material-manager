@@ -2,6 +2,7 @@ package materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.materialdesign.domain.Car;
+import br.com.materialdesign.fragments.CarFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Settings pressed",Toast.LENGTH_LONG).show();
             }
         });
+
+        CarFragment fragment = (CarFragment)
+                getSupportFragmentManager().findFragmentByTag("mainFrag");
+
+        if(fragment == null){
+            fragment = new CarFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.rl_fragment_container,fragment,"mainFrag");
+            ft.commit();
+        }
     }
 
     @Override
@@ -87,5 +104,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public List<Car> getSetCarList(int qtd){
+
+        String[] models = new String[]{"Gallardo", "Vyron", "Corvette", "Pagani Zonda", "Porsche 911 Carreira",
+                "BMW 720i","DB77","Mustang", "Camaro", "CT6"};
+        String[] brands = new String[]{"Lamborghini", "Buggati","Chevrolet", "Pagani", "Porsche", "BMW",
+                "Aston Martin", "Ford", "Chevrolet","Cadillac"};
+
+        int [] photos = new int[]{R.drawable.gallardo, R.drawable.vyron, R.drawable.corvette, R.drawable.paganni_zonda,
+                R.drawable.porsche_911, R.drawable.bmw_720, R.drawable.db77, R.drawable.mustang, R.drawable.camaro,
+                R.drawable.ct6};
+
+        List<Car> list = new ArrayList<>();
+        for (int i=0; i<qtd; i++){
+            Car car = new Car(models[i % models.length],brands[i % brands.length],photos[i % photos.length]);
+            list.add(car);
+        }
+
+        return list;
     }
 }
