@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -51,10 +52,21 @@ public class CarFragment extends Fragment implements RecyclerViewOnClickListener
                 super.onScrolled(recyclerView, dx, dy);
 
                 //LinearLayoutManager lln = (LinearLayoutManager) recyclerView.getLayoutManager();
-                GridLayoutManager lln = (GridLayoutManager) recyclerView.getLayoutManager();
+                //GridLayoutManager lln = (GridLayoutManager) recyclerView.getLayoutManager();
+                StaggeredGridLayoutManager lln = (StaggeredGridLayoutManager) recyclerView.getLayoutManager();
+
+                int aux[] = lln.findLastCompletelyVisibleItemPositions(null);
+                int max = -1;
+
+                // Faz o loop para saber qual é o último item
+                for(int i = 0; i<aux.length; i++){
+                    max = aux[i] > max ? aux[i]:max;
+                }
+
                 CarAdapter adapter = (CarAdapter)recyclerView.getAdapter();
 
-                if(cars.size() == lln.findLastCompletelyVisibleItemPosition()+1){
+                //if(cars.size() == lln.findLastCompletelyVisibleItemPosition()+1){
+                if(cars.size() == max+1){
                     List<Car> moreTenCars = ((MainActivity) getActivity()).getSetCarList(10);
 
                     for(int i=0 ; i<moreTenCars.size(); i++){
@@ -70,7 +82,12 @@ public class CarFragment extends Fragment implements RecyclerViewOnClickListener
         lln.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(lln);*/
 
-        GridLayoutManager lln = new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false);
+        /*GridLayoutManager lln = new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(lln);*/
+
+        StaggeredGridLayoutManager lln = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        // GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS - Evita os gaps
+        lln.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
         recyclerView.setLayoutManager(lln);
 
 
