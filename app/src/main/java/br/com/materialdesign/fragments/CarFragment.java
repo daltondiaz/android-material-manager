@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -20,7 +21,7 @@ import br.com.materialdesign.adapters.CarAdapter;
 import br.com.materialdesign.domain.Car;
 import br.com.materialdesign.intarfaces.RecyclerViewOnClickListenerHack;
 import br.com.materialdesign.MainActivity;
-import materialdesign.toolbar.exemplo.br.materialdesign.R;
+import br.com.materialdesign.R;
 
 /**
  * Created by Dalton on 13/10/2016.
@@ -49,7 +50,8 @@ public class CarFragment extends Fragment implements RecyclerViewOnClickListener
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                LinearLayoutManager lln = (LinearLayoutManager) recyclerView.getLayoutManager();
+                //LinearLayoutManager lln = (LinearLayoutManager) recyclerView.getLayoutManager();
+                GridLayoutManager lln = (GridLayoutManager) recyclerView.getLayoutManager();
                 CarAdapter adapter = (CarAdapter)recyclerView.getAdapter();
 
                 if(cars.size() == lln.findLastCompletelyVisibleItemPosition()+1){
@@ -64,9 +66,13 @@ public class CarFragment extends Fragment implements RecyclerViewOnClickListener
 
         recyclerView.addOnItemTouchListener(new RecycleViewTouchListener(getActivity(),recyclerView,this));
 
-        LinearLayoutManager lln = new LinearLayoutManager(getActivity());
+        /*LinearLayoutManager lln = new LinearLayoutManager(getActivity());
         lln.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(lln);*/
+
+        GridLayoutManager lln = new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lln);
+
 
         // Set lista de Car no RecycleView
         cars = ((MainActivity) getActivity()).getSetCarList(10);

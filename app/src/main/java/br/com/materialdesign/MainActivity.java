@@ -16,7 +16,7 @@ import java.util.List;
 
 import br.com.materialdesign.domain.Car;
 import br.com.materialdesign.fragments.CarFragment;
-import materialdesign.toolbar.exemplo.br.materialdesign.R;
+
 
 public class MainActivity extends AppCompatActivity {
 

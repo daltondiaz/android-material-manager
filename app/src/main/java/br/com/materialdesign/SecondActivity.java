@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import materialdesign.toolbar.exemplo.br.materialdesign.R;
-
 public class SecondActivity extends AppCompatActivity {
 
     // formato action bar
