@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context="materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign.MainActivity">
+    tools:context="br.com.materialdesign.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_main"

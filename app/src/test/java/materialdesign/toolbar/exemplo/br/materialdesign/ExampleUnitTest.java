@@ -1,4 +1,4 @@
-package materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign;
+package materialdesign.toolbar.exemplo.br.materialdesign;
 
 import org.junit.Test;
 

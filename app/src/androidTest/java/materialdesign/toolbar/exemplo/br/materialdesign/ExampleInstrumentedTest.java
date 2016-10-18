@@ -1,4 +1,4 @@
-package materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign;
+package materialdesign.toolbar.exemplo.br.materialdesign;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

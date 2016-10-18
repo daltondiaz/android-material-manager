@@ -13,7 +13,7 @@ import java.util.List;
 
 import br.com.materialdesign.domain.Car;
 import br.com.materialdesign.intarfaces.RecyclerViewOnClickListenerHack;
-import materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign.R;
+import materialdesign.toolbar.exemplo.br.materialdesign.R;
 
 /**
  * Created by Dalton on 13/10/2016.

@@ -1,4 +1,4 @@
-package materialdesign.toolbar.exemplo.br.exempletoolbarmaterialdesign;
+package br.com.materialdesign;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +16,7 @@ import java.util.List;
 
 import br.com.materialdesign.domain.Car;
 import br.com.materialdesign.fragments.CarFragment;
+import materialdesign.toolbar.exemplo.br.materialdesign.R;
 
 public class MainActivity extends AppCompatActivity {
 
