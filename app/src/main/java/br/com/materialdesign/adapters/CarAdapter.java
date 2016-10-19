@@ -20,6 +20,9 @@ import br.com.materialdesign.intarfaces.RecyclerViewOnClickListenerHack;
 
 /**
  * Created by Dalton on 13/10/2016.
+ *
+ * See more about RecycleView :
+ *      https://developer.android.com/training/material/lists-cards.html
  */
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
